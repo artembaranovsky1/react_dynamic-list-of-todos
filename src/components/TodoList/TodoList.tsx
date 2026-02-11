@@ -1,11 +1,12 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Todo } from '../../types/Todo';
 
 type Props = {
   todos: Todo[];
   sortBy: 'all' | 'active' | 'completed';
-  setSelectedTodo: (todo: Todo) => void;
-  selectedTodo: Todo;
+  setSelectedTodo: (todo: Todo | null) => void;
+  selectedTodo: Todo | null;
 };
 
 export const TodoList: React.FC<Props> = ({
@@ -14,10 +15,9 @@ export const TodoList: React.FC<Props> = ({
   setSelectedTodo,
   selectedTodo,
 }) => {
-
-  const filterdTodos: Todo[] = [...todos].filter((todo: Todo): Todo[]=> {
+  const filterdTodos: Todo[] = [...todos].filter((todo: Todo): boolean => {
     if (sortBy === 'all') {
-      return todos;
+      return true;
     }
 
     if (sortBy === 'active') {
@@ -49,9 +49,9 @@ export const TodoList: React.FC<Props> = ({
           <tr
             key={todo.id}
             data-cy="todo"
-            className={
-              selectedTodo?.id === todo.id ? 'has-background-info-light' : ''
-            }
+            className={classNames({
+              'has-background-info-light': selectedTodo?.id === todo.id,
+            })}
           >
             <td className="is-vcentered">{todo.id}</td>
             {todo.completed ? (

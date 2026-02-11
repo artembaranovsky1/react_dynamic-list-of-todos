@@ -2,14 +2,9 @@ type Props = {
   query: string;
   setQuery: (query: string) => void;
   setSortBy: (sortBy: string) => void;
-}
+};
 
-export const TodoFilter: React.FC<Props> = (
-  {
-    query,
-    setQuery,
-    setSortBy
-  }) => {
+export const TodoFilter: React.FC<Props> = ({ query, setQuery, setSortBy }) => {
   return (
     <form className="field has-addons">
       <p className="control">
@@ -41,11 +36,7 @@ export const TodoFilter: React.FC<Props> = (
           <i className="fas fa-magnifying-glass" />
         </span>
 
-        <span
-          className="icon is-right"
-          style={{ pointerEvents: 'all' }}
-        >
-
+        <span className="icon is-right" style={{ pointerEvents: 'all' }}>
           {query ? (
             <button
               data-cy="clearSearchButton"

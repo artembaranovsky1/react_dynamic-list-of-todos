@@ -71,7 +71,6 @@ export const App: React.FC = () => {
                 <TodoList
                   todos={visibleTodos}
                   sortBy={sortBy}
-                  user={user}
                   selectedTodo={selectedTodo}
                   setSelectedTodo={setSelectedTodo}
                 />
